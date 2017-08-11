@@ -1,0 +1,58 @@
+package snapwork.com.mohittest;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.List;
+
+/**
+ * Created by snap34 on 11/8/17.
+ */
+
+public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewHolder> {
+
+    private List<Offer> offerList;
+
+    public class OfferViewHolder extends RecyclerView.ViewHolder {
+        public TextView title, latitude, longitude;
+
+        public OfferViewHolder(View view) {
+            super(view);
+            title = (TextView) view.findViewById(R.id.tvTitle);
+            longitude = (TextView) view.findViewById(R.id.tvLong);
+            latitude = (TextView) view.findViewById(R.id.tvLat);
+        }
+    }
+
+    public OffersAdapter(List<Offer> offerList) {
+        this.offerList = offerList;
+    }
+
+    @Override
+    public OfferViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.offer_item, null, false);
+
+        return new OfferViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(OfferViewHolder holder, int position) {
+        Offer offer = offerList.get(position);
+        holder.title.setText(offer.getName());
+        holder.longitude.setText("Latitude: " + offer.getLON());
+        holder.latitude.setText("Longitude: " + offer.getLAT());
+    }
+
+    @Override
+    public int getItemCount() {
+        if (offerList != null) {
+            return offerList.size();
+        } else {
+            return 0;
+        }
+    }
+}

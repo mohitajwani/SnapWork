@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MohitTest</string>
+    <string name="list_tab">List</string>
+    <string name="maps_tab">Map</string>
+</resources>
