@@ -11,10 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -62,7 +65,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 offersList = response.body();
                 Log.e(TAG, "Size of List=" + offersList.size());
                 updateListItems();
-                plotOffers(map);
+                List<Marker> markers = plotOffers(map);
+                if (!markers.isEmpty()) {
+                    updateFocusToMarkers(markers);
+                }
             }
 
             @Override
@@ -73,15 +79,22 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
-    private void plotOffers(GoogleMap googleMap) {
+    private List<Marker> plotOffers(GoogleMap googleMap) {
+        List<Marker> markers = new ArrayList<>();
         if (googleMap != null && offersList != null) {
             for (Offer offer : offersList) {
-                googleMap.addMarker(new MarkerOptions().title(offer.getName()).position(new LatLng(offer.getLAT(), offer.getLON()))).setTag(offer);
+                Marker marker = googleMap.addMarker(new MarkerOptions()
+                        .title(offer.getName())
+                        .position(new LatLng(offer.getLAT(), offer.getLON()))
+                );
+                marker.setTag(offer);
+                markers.add(marker);
             }
         }
         if (listFragment != null) {
             listFragment.loadReloadData();
         }
+        return markers;
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -105,7 +118,21 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
         googleMap.setOnMarkerClickListener(this);
-        plotOffers(googleMap);
+        List<Marker> markers = plotOffers(map);
+        if (!markers.isEmpty()) {
+            updateFocusToMarkers(markers);
+        }
+    }
+
+    private void updateFocusToMarkers(List<Marker> markers) {
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for (Marker marker : markers) {
+            builder.include(marker.getPosition());
+        }
+        LatLngBounds bounds = builder.build();
+        int padding = 50; // offset from edges of the map in pixels
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+        map.moveCamera(cameraUpdate);
     }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {
