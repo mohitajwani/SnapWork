@@ -1,5 +1,6 @@
 package snapwork.com.mohittest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -7,11 +8,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -140,5 +139,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public List<Offer> getOffersList() {
         return offersList;
+    }
+
+    public void openOfferDetails(Offer offer) {
+        Intent intent = new Intent(this, OffersActivity.class);
+        intent.putExtra(OffersActivity.OFFER_OBJECT, offer);
+        startActivity(intent);
     }
 }

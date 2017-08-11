@@ -1,21 +1,25 @@
 package snapwork.com.mohittest;
 
+import java.io.Serializable;
+
 /**
  * Created by snap34 on 11/8/17.
  */
 
-public class Offer {
-    String address;
-    String name;
-    double LAT;
-    double LON;
-    boolean isMarked;
+public class Offer implements Serializable{
+    private int OFFER_ID;
+    private String address;
+    private String name;
+    private double LAT;
+    private double LON;
+    private boolean isMarked;
 
-    public Offer(String address, String name, double LAT, double LON) {
-        this.address = address;
-        this.name = name;
-        this.LAT = LAT;
-        this.LON = LON;
+    public int getOFFER_ID() {
+        return OFFER_ID;
+    }
+
+    public void setOFFER_ID(int OFFER_ID) {
+        this.OFFER_ID = OFFER_ID;
     }
 
     public String getAddress() {

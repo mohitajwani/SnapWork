@@ -43,8 +43,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
     public void onBindViewHolder(OfferViewHolder holder, int position) {
         Offer offer = offerList.get(position);
         holder.title.setText(offer.getName());
-        holder.longitude.setText("Latitude: " + offer.getLON());
-        holder.latitude.setText("Longitude: " + offer.getLAT());
+        holder.longitude.setText("Longitude: " + offer.getLON());
+        holder.latitude.setText("Latitude: " + offer.getLAT());
     }
 
     @Override

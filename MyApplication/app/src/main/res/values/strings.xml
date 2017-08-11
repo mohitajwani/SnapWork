@@ -2,4 +2,10 @@
     <string name="app_name">MohitTest</string>
     <string name="list_tab">List</string>
     <string name="maps_tab">Map</string>
+    <!--Offers Screen-->
+    <string name="offer_lat">Latitude</string>
+    <string name="offer_lon">Longitude</string>
+    <string name="offer_address">Address</string>
+    <string name="offer_title">Title</string>
+    <string name="offer_id">Offer Id</string>
 </resources>
