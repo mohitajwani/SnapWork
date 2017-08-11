@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onResponse(Call<List<Offer>>call, Response<List<Offer>> response) {
                 offersList = response.body();
                 Log.e(TAG, "Size of List=" + offersList.size());
+                updateListItems();
                 plotOffers(map);
             }
 
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
         if (listFragment != null) {
-            listFragment.loadData();
+            listFragment.loadReloadData();
         }
     }
 
@@ -144,5 +146,25 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         Intent intent = new Intent(this, OffersActivity.class);
         intent.putExtra(OffersActivity.OFFER_OBJECT, offer);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateListItems();
+    }
+
+    private void updateListItems() {
+        Set<String> storedOffers = ((App)getApplication()).offerIDList;
+        if (offersList != null) {
+            for (Offer offer : offersList) {
+                if (storedOffers.contains(offer.getOFFER_ID())) {
+                    offer.setMarked(true);
+                } else {
+                    offer.setMarked(false);
+                }
+            }
+            listFragment.loadReloadData();
+        }
     }
 }

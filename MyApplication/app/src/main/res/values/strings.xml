@@ -8,4 +8,6 @@
     <string name="offer_address">Address</string>
     <string name="offer_title">Title</string>
     <string name="offer_id">Offer Id</string>
+    <string name="button_save">Save</string>
+    <string name="button_discard">Discard</string>
 </resources>

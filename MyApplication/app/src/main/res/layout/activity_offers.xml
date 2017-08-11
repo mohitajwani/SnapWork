@@ -26,16 +26,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
             android:text="@string/offer_id"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvOfferIdValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="5245" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,16 +54,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
             android:text="@string/offer_title"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvTitleValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="Title" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,16 +82,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
             android:text="@string/offer_address"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvAddressValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="sdfhj,isdb,sfofsno" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -95,16 +110,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
             android:text="@string/offer_lat"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvLatValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="12.45678" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -118,14 +138,30 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
             android:text="@string/offer_lon"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvLonValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="12.4562" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btnSaveDiscard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_save"/>
     </LinearLayout>
 </LinearLayout>

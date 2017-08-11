@@ -1,5 +1,6 @@
 package snapwork.com.mohittest;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +54,11 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
                 fragment.showOfferDetailScreen(offer);
             }
         });
+        if (offer.isMarked()) {
+            holder.itemView.setBackgroundColor(Color.LTGRAY);
+        } else {
+            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
+        }
     }
 
     @Override

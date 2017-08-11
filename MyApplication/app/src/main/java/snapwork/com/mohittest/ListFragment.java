@@ -59,13 +59,14 @@ public class ListFragment extends Fragment {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(mDividerItemDecoration);
 
-        loadData();
+        loadReloadData();
     }
 
-    public void loadData() {
-        Log.d(TAG,"loadData mAdapter = " + mAdapter + " offerList = " + offerList);
+    public void loadReloadData() {
+        Log.d(TAG,"loadReloadData mAdapter = " + mAdapter + " offerList = " + offerList);
         List<Offer> offers = ((MainActivity) getActivity()).getOffersList();
         if (offers != null) {
+            offerList.clear();
             offerList.addAll(offers);
             if (offerList != null && !offerList.isEmpty()) {
                 mAdapter.notifyDataSetChanged();

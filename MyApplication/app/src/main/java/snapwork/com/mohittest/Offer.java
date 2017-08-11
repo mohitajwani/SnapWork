@@ -7,18 +7,18 @@ import java.io.Serializable;
  */
 
 public class Offer implements Serializable{
-    private int OFFER_ID;
+    private String OFFER_ID;
     private String address;
     private String name;
     private double LAT;
     private double LON;
     private boolean isMarked;
 
-    public int getOFFER_ID() {
+    public String getOFFER_ID() {
         return OFFER_ID;
     }
 
-    public void setOFFER_ID(int OFFER_ID) {
+    public void setOFFER_ID(String OFFER_ID) {
         this.OFFER_ID = OFFER_ID;
     }
 
