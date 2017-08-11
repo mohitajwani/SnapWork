@@ -28,9 +28,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
     private List<Offer> offersList;
     private GoogleMap map;
     private ListFragment listFragment;
@@ -40,15 +37,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         loadOffers();
@@ -77,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void plotOffers(GoogleMap googleMap) {
         if (googleMap != null && offersList != null) {
             for (Offer offer : offersList) {
-                googleMap.addMarker(new MarkerOptions().title(offer.getName()).position(new LatLng(offer.getLAT(), offer.getLON())));
+                googleMap.addMarker(new MarkerOptions().title(offer.getName()).position(new LatLng(offer.getLAT(), offer.getLON()))).setTag(offer);
             }
         }
         if (listFragment != null) {
@@ -97,22 +94,23 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+        Log.d(TAG, "Marker = " + marker + " Title = " + marker.getTitle() + " Object = " + marker.getTag());
+        openOfferDetails((Offer)marker.getTag());
         return false;
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        googleMap.setOnMarkerClickListener(this);
         plotOffers(googleMap);
-        //MarkerOptions markerOptions = new MarkerOptions().position(new LatLng(19.0760,72.8777)).title("Test");
-        //googleMap.addMarker(markerOptions);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    private class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
+        ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
@@ -142,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public void openOfferDetails(Offer offer) {
+        Log.d(TAG, "Offer = " + offer);
         Intent intent = new Intent(this, OffersActivity.class);
         intent.putExtra(OffersActivity.OFFER_OBJECT, offer);
         startActivity(intent);

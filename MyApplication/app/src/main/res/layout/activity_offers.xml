@@ -1,107 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <EditText
-            android:id="@+id/etOfferId"
+        <TextView
+            android:id="@+id/tvOfferId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="@string/offer_id" />
+            android:text="@string/offer_id"
+            android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/etOfferIdValue"
+        <TextView
+            android:id="@+id/tvOfferIdValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
+            android:textSize="18sp"
             tools:text="5245" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <EditText
-            android:id="@+id/etTitle"
+        <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="@string/offer_title" />
+            android:text="@string/offer_title"
+            android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/etTitleValue"
+        <TextView
+            android:id="@+id/tvTitleValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
+            android:textSize="18sp"
             tools:text="Title" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <EditText
-            android:id="@+id/etAddress"
+        <TextView
+            android:id="@+id/tvAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="@string/offer_address" />
+            android:text="@string/offer_address"
+            android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/etAddressValue"
+        <TextView
+            android:id="@+id/tvAddressValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
+            android:textSize="18sp"
             tools:text="sdfhj,isdb,sfofsno" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <EditText
-            android:id="@+id/etLat"
+        <TextView
+            android:id="@+id/tvLat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="@string/offer_lat" />
+            android:text="@string/offer_lat"
+            android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/etLatValue"
+        <TextView
+            android:id="@+id/tvLatValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
+            android:textSize="18sp"
             tools:text="12.45678" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <EditText
-            android:id="@+id/etLon"
+        <TextView
+            android:id="@+id/tvLon"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="@string/offer_lon" />
+            android:text="@string/offer_lon"
+            android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/etLonValue"
+        <TextView
+            android:id="@+id/tvLonValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
+            android:textSize="18sp"
             tools:text="12.4562" />
     </LinearLayout>
 </LinearLayout>

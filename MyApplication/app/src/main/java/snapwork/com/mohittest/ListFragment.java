@@ -50,7 +50,7 @@ public class ListFragment extends Fragment {
 
     private void initializeAdapter() {
         Log.d(TAG,"initializeAdapter mAdapter = " + mAdapter);
-        mAdapter = new OffersAdapter(offerList);
+        mAdapter = new OffersAdapter(this, offerList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -71,5 +71,9 @@ public class ListFragment extends Fragment {
                 mAdapter.notifyDataSetChanged();
             }
         }
+    }
+
+    public void showOfferDetailScreen(Offer offer){
+        ((MainActivity)getActivity()).openOfferDetails(offer);
     }
 }

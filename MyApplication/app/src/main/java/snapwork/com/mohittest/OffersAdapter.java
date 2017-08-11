@@ -14,6 +14,7 @@ import java.util.List;
 
 public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewHolder> {
 
+    private ListFragment fragment;
     private List<Offer> offerList;
 
     public class OfferViewHolder extends RecyclerView.ViewHolder {
@@ -27,7 +28,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
         }
     }
 
-    public OffersAdapter(List<Offer> offerList) {
+    public OffersAdapter(ListFragment fragment, List<Offer> offerList) {
+        this.fragment = fragment;
         this.offerList = offerList;
     }
 
@@ -41,10 +43,16 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
 
     @Override
     public void onBindViewHolder(OfferViewHolder holder, int position) {
-        Offer offer = offerList.get(position);
+        final Offer offer = offerList.get(position);
         holder.title.setText(offer.getName());
         holder.longitude.setText("Longitude: " + offer.getLON());
         holder.latitude.setText("Latitude: " + offer.getLAT());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment.showOfferDetailScreen(offer);
+            }
+        });
     }
 
     @Override
