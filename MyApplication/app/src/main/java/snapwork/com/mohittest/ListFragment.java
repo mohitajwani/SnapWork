@@ -60,9 +60,12 @@ public class ListFragment extends Fragment {
 
     public void loadData() {
         Log.d(TAG,"loadData mAdapter = " + mAdapter + " offerList = " + offerList);
-        offerList = ((MainActivity) getActivity()).getOffersList();
-        if (offerList != null && !offerList.isEmpty()) {
-            mAdapter.notifyDataSetChanged();
+        List<Offer> offers = ((MainActivity) getActivity()).getOffersList();
+        if (offers != null) {
+            offerList.addAll(offers);
+            if (offerList != null && !offerList.isEmpty()) {
+                mAdapter.notifyDataSetChanged();
+            }
         }
     }
 }

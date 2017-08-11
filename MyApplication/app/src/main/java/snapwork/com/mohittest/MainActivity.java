@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void plotOffers(GoogleMap googleMap) {
-        if (googleMap!= null) {
+        if (googleMap != null && offersList != null) {
             for (Offer offer : offersList) {
                 googleMap.addMarker(new MarkerOptions().title(offer.getName()).position(new LatLng(offer.getLAT(), offer.getLON())));
             }
